@@ -125,9 +125,10 @@
     body.carousel-mode .carousel-stack{display:grid}
     body.carousel-mode .carousel-preview-trigger{display:block!important;background:#fff!important;border-color:#a76486!important;color:#17191c!important}
     body.carousel-mode .stage-area{align-items:stretch;overflow:auto}
-    .carousel-preview-dialog{width:min(760px,calc(100% - 30px))}
-    .carousel-preview-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:18px;max-height:72vh;overflow:auto;padding:4px}
-    .carousel-preview-list .canvas{width:100%;box-shadow:0 12px 30px #1c20281a}
+    .carousel-preview-dialog{width:min(590px,calc(100% - 30px))}
+    .carousel-preview-list{display:grid;gap:26px;max-height:72vh;overflow:auto;padding:4px 10px 18px}
+    .carousel-preview-list .carousel-page-block{margin:0}
+    .carousel-preview-list .canvas{width:min(430px,100%);margin:0 auto;box-shadow:0 18px 45px #1c20281c}
     body:has(#collections.active) .topbar{display:none}
     body:has(#collections.active) .nav [data-page="collections"]{background:#ffffff12;color:#fff}
     body:has(#collections.active) .nav [data-page="home"]{background:transparent;color:#b9bcc0}
