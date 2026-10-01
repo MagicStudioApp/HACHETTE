@@ -98,7 +98,9 @@
     .palette-title{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px;color:#f0d8e6;font-size:11px}
     .palette-title span{font-weight:800;color:#fff}
     .palette-title button{border:1px solid #bf6b9080;border-radius:99px;background:#ffffff12;color:#f5bfd3;padding:4px 8px;font-size:9px;font-weight:900;cursor:pointer}
-    .palette-dots{display:flex;flex-wrap:wrap;gap:8px}
+    .palette-dots{display:grid;gap:9px}
+    .palette-row{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:10px;font-weight:800;color:#5f6268}
+    .palette-row span{white-space:nowrap}.palette-row-group{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}
     .palette-dot{position:relative;width:24px;height:24px;border-radius:50%;border:2px solid #ffffffd9;box-shadow:0 3px 9px #33204a24;overflow:hidden;background:var(--color)}
     .palette-dot input{position:absolute;inset:-4px;width:34px;height:34px;padding:0;border:0;opacity:.02;cursor:pointer}
     .font-panel{padding:13px 0 0;border-top:1px solid #ffffff24;margin-top:13px}
@@ -194,6 +196,26 @@
     .collection-actions select:focus{border-color:#ffd91f!important;box-shadow:0 14px 34px #00000026,0 0 0 3px #ffd91f35,inset 0 1px 0 #ffffff17!important}
     .collection-actions select option{background:#111315;color:#fff}
     .collection-actions .primary{height:43px!important;border-radius:12px!important;background:#a76486!important;border-color:#a76486!important;box-shadow:0 12px 30px #a7648630!important}
+    body .logo-choice.active img{filter:drop-shadow(0 12px 18px color-mix(in srgb,var(--collection-accent,#a76486) 28%,transparent))}
+    body .recent-project:hover{border-color:var(--collection-accent,#a76486);box-shadow:0 16px 36px color-mix(in srgb,var(--collection-accent,#a76486) 14%,transparent)}
+    body #collections .asset-tabs button.active,body .collection-actions .primary{background:var(--collection-accent,#a76486)!important;border-color:var(--collection-accent,#a76486)!important;color:#fff!important}
+    body .asset-tabs .asset-tab-add{background:color-mix(in srgb,var(--collection-accent,#a76486) 18%,transparent)!important;border-color:var(--collection-accent,#a76486)!important;color:var(--collection-secondary,#ffd91f)!important}
+    body.editor-open{--studio-bg:var(--collection-bg,#263b86)!important;--studio-accent:var(--collection-accent,#a76486)!important;--studio-accent-soft:color-mix(in srgb,var(--collection-bg,#263b86) 78%,#000)!important}
+    body.editor-open .editor-workshop-strip:after,body.editor-open .project-tools h2:before{background:var(--collection-accent,#a76486)!important}
+    body.editor-open .editor-workshop-button.active,body.editor-open .segmented button.active,body.editor-open .chip-button.active,body.editor-open .product-counts button.active{border-color:var(--collection-accent,#a76486)!important;box-shadow:inset 0 0 0 1px var(--collection-accent,#a76486)!important}
+    body.editor-open .editor-workshop-button.active b,body.editor-open .editor-workshop-button.active em{background:color-mix(in srgb,var(--collection-accent,#a76486) 12%,transparent)!important;color:var(--collection-accent,#a76486)!important}
+    body.editor-open .project-tools h2,body.editor-open .content-tools h2{color:var(--collection-secondary,#ffe000)!important}
+    body.editor-open .project-actions .save,body.editor-open .layers-toggle{background:var(--collection-accent,#a76486)!important;border-color:var(--collection-accent,#a76486)!important}
+    body .font-controls select,body .font-add-button,body .palette-title button{border-color:color-mix(in srgb,var(--collection-accent,#a76486) 32%,transparent)!important;color:var(--collection-bg,#564767)!important}
+    body .collection-actions:before{color:var(--collection-secondary,#ffe05f)!important}
+    body .collection-actions select:hover{border-color:var(--collection-accent,#a76486)!important;box-shadow:0 14px 34px #00000026,0 0 0 3px color-mix(in srgb,var(--collection-accent,#a76486) 22%,transparent),inset 0 1px 0 #ffffff17!important}
+    body .collection-actions select:focus{border-color:var(--collection-secondary,#ffd91f)!important;box-shadow:0 14px 34px #00000026,0 0 0 3px color-mix(in srgb,var(--collection-secondary,#ffd91f) 22%,transparent),inset 0 1px 0 #ffffff17!important}
+    body .collection-actions .primary{box-shadow:0 12px 30px color-mix(in srgb,var(--collection-accent,#a76486) 28%,transparent)!important}
+    body #collections .collection-actions .primary,body.editor-open .collection-actions .primary{background:var(--collection-accent,#a76486)!important;border-color:var(--collection-accent,#a76486)!important;box-shadow:0 12px 30px color-mix(in srgb,var(--collection-accent,#a76486) 28%,transparent)!important}
+    body .carousel-add-page{border-color:var(--collection-accent,#a76486)!important;background:color-mix(in srgb,var(--collection-accent,#a76486) 12%,transparent)!important;color:var(--collection-accent,#a76486)!important}
+    body .main-title{color:var(--collection-secondary,#fff)}
+    body .badge-center{background-color:var(--collection-accent,#8e2d78)}
+    body:not([data-collection="disney"]) .badge-center{background-image:none}
     @media(max-width:720px){.collection-page-head,.studio-context-head{display:grid}.collection-actions{width:100%}.collection-head-logo{max-width:210px;width:60vw}}
   </style>
 </head>
@@ -292,13 +314,13 @@ let activeAssetCategory='backgrounds';
 const storedAssets=JSON.parse(localStorage.getItem('hachette-demo-assets')||'{}');let activeCollection=localStorage.getItem('hachette-active-collection')||'disney',activeWorkshop=null,selected=null,productCount=3,currentBg='blue-h',animationOn=true,activeCarouselPage=1,carouselPageCount=0;
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const collectionDefaults={
- disney:{logo:'assets/collections/romans-inoubliables/logo-serie.png',homeLogo:'assets/collection-logos/disney-black.png',copyright:'Disney © 2025',font:'Bodoniflf FLF',palette:['#564767','#a76486']},
- renault5:{logo:'assets/collections/renault-5/logo.png',copyright:'© Hachette Collections',font:'Cooper Black',palette:['#8f4a1c','#f1c64a']},
- grandmere:{logo:'assets/collection-logos/delicieuses.png',copyright:'À renseigner',font:'Georgia',palette:['#ffffff','#c21b78']},
- asterix:{logo:'assets/collection-logos/asterix.png',copyright:'À renseigner',font:'Arial Black',palette:['#ffffff','#e21d2b']},
- goldorak:{logo:'assets/collection-logos/goldorak.png',copyright:'À renseigner',font:'Arial Black',palette:['#111315','#e8bf4f']},
- sneakers:{logo:'assets/collection-logos/sneakers.png',copyright:'À renseigner',font:'Arial Black',palette:['#111315','#e7352d']},
- gaston:{logo:'assets/collection-logos/gaston.png',copyright:'À renseigner',font:'Arial Black',palette:['#ffffff','#111315']}
+ disney:{logo:'assets/collections/romans-inoubliables/logo-serie.png',homeLogo:'assets/collection-logos/disney-black.png',copyright:'Disney © 2025',font:'Bodoniflf FLF',palette:['#564767','#a76486','#ffd91f','#263b86','#e7b7ca']},
+ renault5:{logo:'assets/collections/renault-5/logo.png',copyright:'© Hachette Collections',font:'Cooper Black',palette:['#8f4a1c','#d86527','#f1c64a','#f7e6b9','#3b2518','#b83b2a']},
+ grandmere:{logo:'assets/collection-logos/delicieuses.png',copyright:'À renseigner',font:'Georgia',palette:['#ffffff','#c21b78','#f2b5d7','#7a1d50']},
+ asterix:{logo:'assets/collection-logos/asterix.png',copyright:'À renseigner',font:'Arial Black',palette:['#ffffff','#e21d2b','#111315','#f2c338']},
+ goldorak:{logo:'assets/collection-logos/goldorak.png',copyright:'À renseigner',font:'Arial Black',palette:['#111315','#e8bf4f','#d43d3a','#f6f0d2']},
+ sneakers:{logo:'assets/collection-logos/sneakers.png',copyright:'À renseigner',font:'Arial Black',palette:['#111315','#e7352d','#ffffff','#3a3a3a']},
+ gaston:{logo:'assets/collection-logos/gaston.png',copyright:'À renseigner',font:'Arial Black',palette:['#ffffff','#111315','#f0d23a','#54a264']}
 };
 const collectionDefault=()=>collectionDefaults[activeCollection]||collectionDefaults.disney;
 const collectionLogo=()=>collectionDefault().logo;
@@ -347,7 +369,7 @@ function template(id){
  return html;
 }
 function renderEditorWorkshops(){editorWorkshopStrip.innerHTML=workshops.map(w=>`<button class="editor-workshop-button ${w.id===activeWorkshop?.id?'active':''}" data-editor-workshop="${w.id}"><b>${w.icon}</b><span>${w.name}</span><small>${w.summary||w.description}</small><em>${formatSummary(w)}</em></button>`).join('')}
-function updateStudioTheme(){let theme={accent:collectionPalette?.[1]||collectionDefaultPalette()[1],soft:collectionPalette?.[0]||collectionDefaultPalette()[0],bg:collectionPalette?.[0]||collectionDefaultPalette()[0]};document.body.style.setProperty('--studio-accent',theme.accent);document.body.style.setProperty('--studio-accent-soft',theme.soft);document.body.style.setProperty('--studio-bg',theme.bg);document.body.style.setProperty('--collection-bg',theme.bg);document.body.style.setProperty('--collection-accent',theme.accent);document.body.style.setProperty('--collection-warm',theme.accent)}
+function updateStudioTheme(){let theme={accent:collectionPalette?.[1]||collectionDefaultPalette()[1],secondary:collectionPalette?.[2]||collectionPalette?.[1]||collectionDefaultPalette()[1],soft:collectionPalette?.[0]||collectionDefaultPalette()[0],warm:collectionPalette?.[3]||collectionPalette?.[1]||collectionDefaultPalette()[1],bg:collectionPalette?.[0]||collectionDefaultPalette()[0]};document.body.style.setProperty('--studio-accent',theme.accent);document.body.style.setProperty('--studio-accent-soft',theme.soft);document.body.style.setProperty('--studio-bg',theme.bg);document.body.style.setProperty('--collection-bg',theme.bg);document.body.style.setProperty('--collection-accent',theme.accent);document.body.style.setProperty('--collection-secondary',theme.secondary);document.body.style.setProperty('--collection-warm',theme.warm)}
 function renderCarouselStack(target=carouselStack){const labels=carouselPageLabels();target.innerHTML=labels.map((label,i)=>`<section class="carousel-page-block"><div class="carousel-page-separator">${label}</div><div class="canvas carousel" data-workshop="new" data-carousel-canvas="${i+1}">${carouselTemplate(i+1)}</div></section>`).join('')+(target===carouselStack?'<button class="carousel-add-page" data-add-carousel-page title="Ajouter une page">+</button>':'');const bg=collectionBackgrounds()[0]||backgrounds[0];target.querySelectorAll('.canvas').forEach(page=>{page.style.backgroundImage=`url('${assetUrl(bg.src)}')`;hydrateDefaultProducts(page)})}
 function openCarouselPreview(){renderCarouselStack(carouselPreviewList);carouselPreviewDialog.showModal()}
 function collectionBackgrounds(){const collectionBgs=collectionItems().filter(a=>a.category?.startsWith('background')).map((a,i)=>({id:a.category||'background'+(i+1),name:a.name||'Fond '+(i+1),src:a.src}));return collectionBgs.length?collectionBgs:backgrounds}
@@ -405,10 +427,12 @@ const folderOrderedLibrary=[
  {category:'elements',name:'EDITION DE LUXE.png',src:localAssetBase+'ELEMENTS GRAPHIQUES/EDITION DE LUXE.png'}
 ];
 let pendingAssetCategory='elements';
-let collectionPalette=JSON.parse(localStorage.getItem('hachette-demo-palette-'+activeCollection)||'null')||collectionDefaultPalette();
+const savedPalette=()=>{const stored=JSON.parse(localStorage.getItem('hachette-demo-palette-'+activeCollection)||'null');return Array.isArray(stored)&&stored.length>=collectionDefaultPalette().length?stored:collectionDefaultPalette()};
+let collectionPalette=savedPalette();
 let collectionTitleFont=localStorage.getItem('hachette-demo-title-font-'+activeCollection)||collectionFont();
 function syncCollectionIdentity(){
- collectionPalette=JSON.parse(localStorage.getItem('hachette-demo-palette-'+activeCollection)||'null')||collectionDefaultPalette();
+ document.body.dataset.collection=activeCollection;
+ collectionPalette=savedPalette();
  collectionTitleFont=localStorage.getItem('hachette-demo-title-font-'+activeCollection)||collectionFont();
  if(window.titleFontSelect)titleFontSelect.value=[...titleFontSelect.options].some(o=>o.value===collectionTitleFont)?collectionTitleFont:titleFontSelect.value;
  document.querySelectorAll('.collection-head-logo').forEach(img=>{img.src=assetUrl(collectionLogo());img.alt=collections.find(c=>c.id===activeCollection)?.name||'Collection'});
@@ -419,13 +443,16 @@ function syncCollectionIdentity(){
 }
 function renderPalette(){
  if(!window.paletteDots)return;
- paletteDots.innerHTML=collectionPalette.map((color,i)=>`<label class="palette-dot" style="--color:${color}" title="${color}"><input type="color" value="${color}" data-palette-index="${i}"></label>`).join('');
+ const dot=(color,i)=>`<label class="palette-dot" style="--color:${color}" title="${color}"><input type="color" value="${color}" data-palette-index="${i}"></label>`;
+ paletteDots.innerHTML=`<div class="palette-row"><span>Couleur 1</span>${dot(collectionPalette[0],0)}</div><div class="palette-row"><span>Couleur 2</span>${dot(collectionPalette[1],1)}</div><div class="palette-row"><span>Couleurs secondaires</span><div class="palette-row-group">${collectionPalette.slice(2).map((color,i)=>dot(color,i+2)).join('')}</div></div>`;
  paletteDots.querySelectorAll('input').forEach(input=>input.oninput=()=>{collectionPalette[input.dataset.paletteIndex]=input.value;localStorage.setItem('hachette-demo-palette-'+activeCollection,JSON.stringify(collectionPalette));renderPalette()});
  document.body.style.setProperty('--studio-bg',collectionPalette[0]||'#564767');
  document.body.style.setProperty('--studio-accent',collectionPalette[1]||'#a76486');
  document.body.style.setProperty('--collection-bg',collectionPalette[0]||'#564767');
  document.body.style.setProperty('--collection-accent',collectionPalette[1]||'#a76486');
- document.body.style.setProperty('--collection-warm',collectionPalette[1]||'#a76486');
+ document.body.style.setProperty('--collection-secondary',collectionPalette[2]||collectionPalette[1]||'#ffd91f');
+ document.body.style.setProperty('--collection-warm',collectionPalette[3]||collectionPalette[1]||'#a76486');
+ updateStudioTheme();
 }
 function applyTitleFont(font=collectionTitleFont){
  collectionTitleFont=font;
