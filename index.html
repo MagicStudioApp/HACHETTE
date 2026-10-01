@@ -121,6 +121,9 @@ const collectionLibrary={disney:[
 let activeAssetCategory='all';
 const storedAssets=JSON.parse(localStorage.getItem('hachette-demo-assets')||'{}');let activeCollection=localStorage.getItem('hachette-active-collection')||'disney',activeWorkshop=null,selected=null,productCount=3,currentBg='blue-v',animationOn=true;
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+// Le bouton de retour a été retiré de l'interface : on garde une référence
+// explicite pour que son absence ne bloque pas le reste du studio.
+const closeEditor=null;
 const collectionCard=c=>`<article class="card collection-card"><div class="collection-cover"><span>${storedAssets[c.id]?.length||0} assets</span></div><div class="collection-body"><h3>${c.name}</h3><p>Collection éditoriale</p><div class="collection-meta"><span>Identité</span><span>Produits</span><span>Fonds</span></div></div><button class="card-action" data-collection="${c.id}" aria-label="Ouvrir ${c.name}"></button></article>`;
 const workshopCard=w=>`<article class="card workshop"><div class="workshop-icon">${w.icon}</div><h3>${w.name}</h3><p>${w.summary||w.description}</p><div class="formats"><span>＋ format</span></div><button class="card-action" data-workshop="${w.id}" aria-label="Ouvrir ${w.name}"></button></article>`;
 function renderHome(){homeCollections.innerHTML=collections.map(collectionCard).join('');homeWorkshops.innerHTML=workshops.slice(0,3).map(workshopCard).join('');allWorkshops.innerHTML=workshops.map(workshopCard).join('');collectionSelect.innerHTML=collections.map(c=>`<option value="${c.id}" ${c.id===activeCollection?'selected':''}>Collection : ${c.name}</option>`).join('');identityName.textContent=collections.find(c=>c.id===activeCollection).name;identityCopyright.textContent=activeCollection==='disney'?'© 2025 Disney':'À renseigner';renderAssets()}
