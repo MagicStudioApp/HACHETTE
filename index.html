@@ -106,8 +106,9 @@
     .font-controls select,.font-add-button{width:100%;border:1px solid #bf6b9080;border-radius:8px;background:#ffffff12;color:#fff;padding:8px 9px;font-size:10px;font-weight:800}
     .font-add-button{color:#f5bfd3;cursor:pointer;text-align:center}
     .main-title,.badge-center{font-family:var(--collection-title-font,"Bodoniflf FLF"),Georgia,serif}
+    .logo-placeholder img{display:block;width:160px;max-width:100%;height:auto;filter:drop-shadow(0 5px 10px #33204a28)}
     .canvas[data-workshop="new"] .logo-placeholder{top:5%;left:50%;width:170px;translate:-50% 0;text-align:center}
-    .canvas[data-workshop="new"] .logo-placeholder img{display:block;width:100%;height:auto;filter:drop-shadow(0 5px 10px #33204a28)}
+    .canvas[data-workshop="new"] .logo-placeholder img{width:100%}
     .carousel-page-pill{right:4%;top:4%;width:34px;height:22px;border-radius:99px;background:#17191c99;color:#fff;display:grid;place-items:center;font-size:10px;font-weight:900}
     .carousel-edition-badge{left:8%;top:26%;width:86px;height:86px;border:5px solid #fff;border-radius:50%;background:#ffffff30;color:#fff;display:grid;place-items:center;text-align:center;font-size:12px;line-height:1.05;font-weight:900;box-shadow:0 10px 24px #33204a20}
     .canvas[data-workshop="new"] .main-title{top:19%;left:8%;right:auto;font-size:44px;line-height:.9;color:#fff;text-align:left;text-shadow:0 10px 24px #33204a32}
@@ -290,7 +291,7 @@ function carouselTemplate(page){
  return pill+item('main-title',`LE N°${productNumber}`)+productItem(`PRODUIT ${productNumber} A`,category,'left:13%;top:34%;width:156px;height:190px')+productItem(`PRODUIT ${productNumber} B`,category,'left:50%;top:42%;width:178px;height:150px')+cr;
 }
 function template(id){
- const logo=item('logo-placeholder','LOGO COLLECTION');const cr=item('copyright',activeCollection==='disney'?'Disney © 2025':'© Hachette Collections');let html='';
+ const logo=item('logo-placeholder','<img src="assets/collections/romans-inoubliables/logo-serie.png" alt="Disney Romans Inoubliables">');const cr=item('copyright',activeCollection==='disney'?'Disney © 2025':'© Hachette Collections');let html='';
  if(id==='release')html=logo+item('main-title','NOUVEAUTÉ')+item('product-placeholder','PRODUIT 1','left:18%;top:34%')+item('product-placeholder','PRODUIT 2','left:43%;top:38%')+item('product-placeholder','PRODUIT 3','left:68%;top:34%')+item('badge-center','N°1 · EN KIOSQUE','top:78%')+cr;
  if(id==='new')html=carouselTemplate(activeCarouselPage);
  if(id==='planning')html=logo+item('main-title','PLANNING SEPTEMBRE','text-align:left;left:6%;top:10%')+[0,1,2].map((_,i)=>item('date-dot','30/09',`left:8%;top:${31+i*20}%`)+item('text-block',`<b>NOUVELLE SORTIE</b><br><small>Une courte description de la sortie.</small>`,`left:24%;right:8%;top:${29+i*20}%`)).join('')+cr;
