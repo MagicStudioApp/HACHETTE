@@ -108,7 +108,7 @@
     .font-controls{display:grid;gap:7px}
     .font-controls select,.font-add-button{width:100%;border:1px solid #bf6b9080;border-radius:8px;background:#ffffff12;color:#fff;padding:8px 9px;font-size:10px;font-weight:800}
     .font-add-button{color:#f5bfd3;cursor:pointer;text-align:center}
-    .main-title,.badge-center{font-family:var(--collection-title-font,"Bodoniflf FLF"),Georgia,serif}
+    .main-title,.badge-center,.carousel-edition-badge,.carousel-page-pill,.date-dot{font-family:var(--collection-title-font,"Bodoniflf FLF"),Georgia,serif}
     .logo-placeholder img{display:block;width:160px;max-width:100%;height:auto;filter:drop-shadow(0 5px 10px #33204a28)}
     .canvas[data-workshop="new"] .logo-placeholder{top:5%;left:50%;width:170px;translate:-50% 0;text-align:center}
     .canvas[data-workshop="new"] .logo-placeholder img{width:100%}
@@ -327,6 +327,8 @@ const collectionLogo=()=>collectionDefault().logo;
 const collectionCopyright=()=>collectionDefault().copyright;
 const collectionFont=()=>collectionDefault().font;
 const collectionDefaultPalette=()=>collectionDefault().palette;
+const builtInTitleFonts=()=>['Bodoniflf FLF','Cooper Black','"DM Sans"','Georgia','Times New Roman','Trebuchet MS','Arial Black'];
+const savedTitleFont=()=>{const stored=localStorage.getItem('hachette-demo-title-font-'+activeCollection);return stored&&!builtInTitleFonts().includes(stored)?stored:collectionFont()};
 // Le bouton de retour a été retiré de l'interface : on garde une référence
 // explicite pour que son absence ne bloque pas le reste du studio.
 const closeEditor=null;
@@ -429,11 +431,11 @@ const folderOrderedLibrary=[
 let pendingAssetCategory='elements';
 const savedPalette=()=>{const stored=JSON.parse(localStorage.getItem('hachette-demo-palette-'+activeCollection)||'null');return Array.isArray(stored)&&stored.length>=collectionDefaultPalette().length?stored:collectionDefaultPalette()};
 let collectionPalette=savedPalette();
-let collectionTitleFont=localStorage.getItem('hachette-demo-title-font-'+activeCollection)||collectionFont();
+let collectionTitleFont=savedTitleFont();
 function syncCollectionIdentity(){
  document.body.dataset.activeCollection=activeCollection;
  collectionPalette=savedPalette();
- collectionTitleFont=localStorage.getItem('hachette-demo-title-font-'+activeCollection)||collectionFont();
+ collectionTitleFont=savedTitleFont();
  if(window.titleFontSelect)titleFontSelect.value=[...titleFontSelect.options].some(o=>o.value===collectionTitleFont)?collectionTitleFont:titleFontSelect.value;
  document.querySelectorAll('.collection-head-logo').forEach(img=>{img.src=assetUrl(collectionLogo());img.alt=collections.find(c=>c.id===activeCollection)?.name||'Collection'});
  const seriesLogo=document.querySelector('.identity-logo');
