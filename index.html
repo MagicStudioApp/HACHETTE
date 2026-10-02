@@ -480,7 +480,7 @@ function applyReleaseContent(key){
  }
  if(key==='post lancement'){
   if(title)title.style.display='none';if(text)text.style.display='none';
-  if(badge){badge.style.display='';badge.innerHTML='LE N°1';badge.style.left='25%';badge.style.top='34%'}
+  if(badge){badge.style.display='';badge.innerHTML='LE N°1';badge.style.left='calc(25% + 50px)';badge.style.top='calc(34% + 20px)'}
   if(logo){logo.style.left='50%';logo.style.top='4%';logo.style.width='190px';logo.style.height='70px';logo.style.translate='-50% 0';logo.style.textAlign='center';logo.style.justifyItems='center';const image=logo.querySelector('img');if(image){image.style.width='170px';image.style.maxWidth='190px';image.style.maxHeight='70px'}}
   if(offer){offer.style.display='block';offer.style.left='50%';offer.style.top='21%';offer.style.width='335px';offer.style.fontSize='12px'}
   if(copyright){copyright.style.left='50%';copyright.style.right='auto';copyright.style.bottom='3%';copyright.style.translate='-50% 0';copyright.style.textAlign='center'}
