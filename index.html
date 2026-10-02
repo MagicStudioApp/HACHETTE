@@ -4,7 +4,7 @@
   <base href="https://magicstudioapp.github.io/HACHETTE/">
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Hachette Collections Studio</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Ultra&display=swap" rel="stylesheet">
   <style>
     :root{--ink:#17191c;--muted:#777b81;--line:#e7e7e4;--paper:#fafaf8;--panel:#fff;--dark:#151719;--dark2:#202326;--dark3:#2a2d31;--blue:#162f6f;--pink:#cd6f9b;--orange:#ff8057}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:"DM Sans",sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}.hidden{display:none!important}
     .shell{min-height:100vh;display:grid;grid-template-columns:235px 1fr}.side{position:sticky;top:0;height:100vh;padding:25px 18px;background:#202225;color:#fff;display:flex;flex-direction:column;z-index:20}.brand{padding:0 8px 25px}.brand img{width:160px;height:58px;object-fit:contain}.nav{display:grid;gap:6px}.nav button{border:0;border-radius:10px;background:transparent;color:#b9bcc0;padding:11px 13px;text-align:left;font-weight:600}.nav button:hover,.nav button.active{background:#ffffff12;color:#fff}.nav button span{display:inline-block;width:27px}.side-note{margin-top:auto;padding:14px;border:1px solid #ffffff17;border-radius:13px;color:#b9bcc0;font-size:11px;line-height:1.5}.side-note b{display:block;color:#fff;margin-bottom:4px}
@@ -328,7 +328,7 @@ const collectionCopyright=()=>collectionDefault().copyright;
 const collectionFont=()=>collectionDefault().font;
 const collectionDefaultPalette=()=>collectionDefault().palette;
 const builtInTitleFonts=()=>['Bodoniflf FLF','Cooper Black','"DM Sans"','Georgia','Times New Roman','Trebuchet MS','Arial Black'];
-const titleFontStack=font=>font==='Cooper Black'?'"Cooper Black","Cooper Std Black","Cooper Black Std","Cooper Md BT","Arial Black",Impact,serif':font==='Bodoniflf FLF'?'"Bodoniflf FLF",Georgia,"Times New Roman",serif':font==='"DM Sans"'?'"DM Sans",sans-serif':font.includes(',')?font:`"${font}"`;
+const titleFontStack=font=>font==='Cooper Black'?'"Cooper Black","Cooper Std Black","Cooper Black Std","Cooper Md BT","Ultra",Georgia,serif':font==='Bodoniflf FLF'?'"Bodoniflf FLF",Georgia,"Times New Roman",serif':font==='"DM Sans"'?'"DM Sans",sans-serif':font.includes(',')?font:`"${font}"`;
 const savedTitleFont=()=>{const stored=localStorage.getItem('hachette-demo-title-font-'+activeCollection);return stored&&!builtInTitleFonts().includes(stored)?stored:collectionFont()};
 // Le bouton de retour a été retiré de l'interface : on garde une référence
 // explicite pour que son absence ne bloque pas le reste du studio.
