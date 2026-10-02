@@ -234,6 +234,7 @@
     body .main-title{color:var(--collection-secondary,#fff)}
     body .badge-center{background-color:var(--collection-accent,#8e2d78)}
     body:not([data-active-collection="disney"]) .badge-center{background-image:none}
+    .asset-order-toolbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:0 0 16px}.asset-order-toolbar span{color:#6d7075;font-size:11px}.asset-order-save{border:1px solid var(--collection-accent,#a76486);border-radius:7px;background:var(--collection-accent,#a76486);color:#fff;padding:9px 13px;font-size:10px;font-weight:900;cursor:pointer;transition:.18s}.asset-order-save:disabled{border-color:#d8d8d3;background:#ededeb;color:#989b9f;cursor:default}.asset-order-save.saved{background:#17191c;border-color:#17191c;color:#fff}.asset-photo[draggable="true"]{position:relative;cursor:grab;touch-action:none}.asset-photo[draggable="true"]:active{cursor:grabbing}.asset-photo[draggable="true"]:after{content:"⋮⋮";position:absolute;top:5px;right:5px;width:25px;height:22px;border-radius:5px;background:#17191cdd;color:#fff;display:grid;place-items:center;font-size:11px;letter-spacing:-2px;opacity:0;transition:.15s}.asset-photo[draggable="true"]:hover:after,.asset-photo[draggable="true"]:focus:after{opacity:1}.asset-photo.is-dragging,.asset-numbered-group.is-dragging{opacity:.35}.asset-photo-row.is-drag-target,.asset-numbered-group.is-drag-target{outline:2px dashed var(--collection-accent,#a76486);outline-offset:7px;border-radius:5px}.asset-numbered-title[draggable="true"]{display:flex;align-items:center;gap:7px;width:max-content;cursor:grab}.asset-numbered-title[draggable="true"]:after{content:"⋮⋮";font-family:Arial,sans-serif;font-size:11px;letter-spacing:-2px;color:#8b8e92}
     @media(max-width:720px){.collection-page-head,.studio-context-head{display:grid}.collection-actions{width:100%}.collection-head-logo{max-width:210px;width:60vw}}
   </style>
 </head>
@@ -243,7 +244,7 @@
   <main>
     <div class="topbar"><div><p class="eyebrow" id="pageEyebrow">Studio créatif</p><h1 id="pageTitle">Bonjour, que voulez-vous créer ?</h1></div></div>
     <section class="page active" id="home"><div class="section-head"><div><h2>Choisir une collection</h2><p>Sélectionnez l’univers à ouvrir.</p></div></div><div class="home-rail logo-rail" id="logoCarousel"><div class="rail-track" id="homeCollections"></div></div><div class="section-head" style="margin-top:32px"><div><h2>Créer avec un atelier</h2><p>Faites glisser pour voir tous les formats.</p></div></div><div class="home-rail workshop-rail" id="workshopCarousel"><div class="rail-track" id="homeWorkshops"></div></div><div class="section-head" style="margin-top:32px"><div><h2>Mes projets récents</h2><p>Reprendre rapidement une création.</p></div></div><div class="home-rail recent-rail" id="recentCarousel"><div class="rail-track" id="recentProjects"></div></div></section>
-<section class="page" id="collections"><div class="collection-page-head"><img class="collection-head-logo" src="assets/collections/romans-inoubliables/logo-serie.png" alt="Disney Romans Inoubliables"><div class="collection-actions" id="collectionActions"><select id="collectionSelect"></select><button class="primary" id="addCollectionButton" type="button">＋ Ajouter une collection</button></div></div><div class="asset-layout"><article class="card identity"><div class="identity-logo">ROMANS<br>INOUBLIABLES</div><h3 id="identityName"></h3><p>Le catalogue de la collection</p><div class="identity-row"><span>Copyright</span><b id="identityCopyright">Disney © 2025</b></div><div class="identity-row"><span>Assets</span><b id="identityAssetCount">0</b></div><div class="identity-row"><span>Produit</span><b id="identityProductCount">0</b></div><div class="identity-row"><span>Cadeaux</span><b id="identityGiftCount">0</b></div><div class="palette-panel"><div class="palette-title"><span>Couleurs</span><button id="autoPaletteButton" type="button">Auto</button></div><div class="palette-dots" id="paletteDots"></div></div><div class="font-panel"><div class="font-title">Police</div><div class="font-controls"><select id="titleFontSelect"><option value='Bodoniflf FLF'>Bodoniflf FLF</option><option value='Cooper Black'>Cooper Black</option><option value='\"DM Sans\"'>DM Sans</option><option value='Georgia'>Georgia</option><option value='Times New Roman'>Times New Roman</option><option value='Trebuchet MS'>Trebuchet MS</option></select><label class="font-add-button">＋ Ajouter une police<input id="fontUpload" type="file" accept=".ttf,.otf,.woff,.woff2" hidden></label></div></div><b id="identityCategoryCount" hidden>0</b></article><article class="card asset-panel"><div class="asset-tabs" id="assetTabs"></div><select class="asset-subcategory" id="assetSubcategory"></select><div class="asset-catalog-head"><strong id="assetCatalogTitle">Tous les assets</strong><span id="assetCatalogCount"></span></div><div class="asset-grid" id="assetGrid"></div></article></div></section>
+<section class="page" id="collections"><div class="collection-page-head"><img class="collection-head-logo" src="assets/collections/romans-inoubliables/logo-serie.png" alt="Disney Romans Inoubliables"><div class="collection-actions" id="collectionActions"><select id="collectionSelect"></select><button class="primary" id="addCollectionButton" type="button">＋ Ajouter une collection</button></div></div><div class="asset-layout"><article class="card identity"><div class="identity-logo">ROMANS<br>INOUBLIABLES</div><h3 id="identityName"></h3><p>Le catalogue de la collection</p><div class="identity-row"><span>Copyright</span><b id="identityCopyright">Disney © 2025</b></div><div class="identity-row"><span>Assets</span><b id="identityAssetCount">0</b></div><div class="identity-row"><span>Produit</span><b id="identityProductCount">0</b></div><div class="identity-row"><span>Cadeaux</span><b id="identityGiftCount">0</b></div><div class="palette-panel"><div class="palette-title"><span>Couleurs</span><button id="autoPaletteButton" type="button">Auto</button></div><div class="palette-dots" id="paletteDots"></div></div><div class="font-panel"><div class="font-title">Police</div><div class="font-controls"><select id="titleFontSelect"><option value='Bodoniflf FLF'>Bodoniflf FLF</option><option value='Cooper Black'>Cooper Black</option><option value='\"DM Sans\"'>DM Sans</option><option value='Georgia'>Georgia</option><option value='Times New Roman'>Times New Roman</option><option value='Trebuchet MS'>Trebuchet MS</option></select><label class="font-add-button">＋ Ajouter une police<input id="fontUpload" type="file" accept=".ttf,.otf,.woff,.woff2" hidden></label></div></div><b id="identityCategoryCount" hidden>0</b></article><article class="card asset-panel"><div class="asset-order-toolbar"><span>Glissez les visuels pour définir leur ordre automatique.</span><button class="asset-order-save" id="assetOrderSave" type="button" disabled>Enregistrer l’ordre</button></div><div class="asset-tabs" id="assetTabs"></div><select class="asset-subcategory" id="assetSubcategory"></select><div class="asset-catalog-head"><strong id="assetCatalogTitle">Tous les assets</strong><span id="assetCatalogCount"></span></div><div class="asset-grid" id="assetGrid"></div></article></div></section>
     <section class="page" id="workshops"><div class="section-head"><div><h2>Choisir un atelier</h2><p>L’atelier s’ouvrira ici, sans changer d’outil.</p></div></div><div class="grid" id="allWorkshops"></div></section>
 
     <section class="editor" id="editor">
@@ -372,7 +373,7 @@ const copy={home:['Studio créatif','Bonjour, que voulez-vous créer ?'],collect
 function go(page){document.body.classList.remove('editor-open','carousel-mode');$$('.page').forEach(p=>p.classList.toggle('active',p.id===page));$$('.nav [data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===page));pageEyebrow.textContent=copy[page][0];pageTitle.textContent=copy[page][1];location.hash=page}
 function item(cls,text,style=''){return `<div class="canvas-item ${cls}" data-layer="${text.replace(/<[^>]+>/g,'')}" style="${style}" ${cls.includes('text')||cls.includes('title')||cls.includes('badge')?'contenteditable="true"':''}>${text}</div>`}
 function productItem(label,category,style=''){return `<div class="canvas-item product-placeholder" data-layer="${label}" data-product-category="${category}" style="${style}">${label}</div>`}
-function carouselProductCategories(){const categories=[...new Set(collectionItems().map(a=>a.category).filter(c=>/^product\d+$/.test(c)))];return categories.sort((a,b)=>Number(a.replace('product',''))-Number(b.replace('product','')))}
+function carouselProductCategories(){return [...new Set(collectionItems().map(a=>a.category).filter(c=>/^product\d+$/.test(c)))]}
 function baseCarouselPageLabels(){const categories=carouselProductCategories();return ['Page 1',...(categories.length?categories:['product1','product2','product3','product4','product5']).map(c=>`LE N°${c.replace('product','')}`)]}
 function carouselPageLabels(){const labels=baseCarouselPageLabels();while(labels.length<carouselPageCount)labels.push('Page '+(labels.length+1));return labels}
 function carouselTemplate(page){
@@ -613,22 +614,47 @@ const numberedCategoryName=category=>{
  return (categoryLabels[category]||'Autres assets').toUpperCase();
 };
 const countNumberedGroups=(items,prefix)=>new Set(items.filter(a=>a.category?.startsWith(prefix)).map(a=>a.category)).size;
-const sortedNumberedCategories=(items,prefix)=>[...new Set(items.filter(a=>a.category?.startsWith(prefix)).map(a=>a.category))]
- .sort((a,b)=>{const av=Number(a.replace(prefix,'')),bv=Number(b.replace(prefix,''));if(Number.isFinite(av)&&Number.isFinite(bv))return av-bv;if(Number.isFinite(av))return -1;if(Number.isFinite(bv))return 1;return a.localeCompare(b)});
+const sortedNumberedCategories=(items,prefix)=>[...new Set(items.filter(a=>a.category?.startsWith(prefix)).map(a=>a.category))];
 const assetUrl=src=>{
  if(!src)return '';
  if(src.startsWith('data:')||src.startsWith('http')||src.startsWith('file:'))return encodeURI(src);
  const pageDir=location.href.split('#')[0].replace(/\/[^/]*$/,'/');
  return encodeURI(pageDir+src);
 };
-const renderPhotoGroup=(title,items)=>`<section class="asset-numbered-group"><h4 class="asset-numbered-title">${title}</h4><div class="asset-photo-row">${items.map(a=>`<figure class="asset-photo"><img src="${assetUrl(a.src)}" alt=""></figure>`).join('')}</div></section>`;
+const renderPhotoGroup=(title,items)=>`<section class="asset-numbered-group" data-asset-group-category="${items[0]?.category||''}"><h4 class="asset-numbered-title" draggable="true" tabindex="0">${title}</h4><div class="asset-photo-row" data-asset-category="${items[0]?.category||''}">${items.map(a=>`<figure class="asset-photo" draggable="true" tabindex="0" data-asset-order-id="${assetOrderId(a)}" data-asset-category="${a.category}"><img src="${assetUrl(a.src)}" alt="" draggable="false"></figure>`).join('')}</div></section>`;
+const assetOrderKey=()=>`hachette-asset-order-${activeCollection}`;
+const assetOrderId=asset=>{let hash=2166136261;for(const char of `${asset.category}|${asset.name||''}|${asset.src||''}`){hash^=char.charCodeAt(0);hash=Math.imul(hash,16777619)}return `${asset.category}:${(hash>>>0).toString(36)}`};
+const savedAssetOrder=()=>{try{return JSON.parse(localStorage.getItem(assetOrderKey())||'[]')}catch(_){return []}};
+const orderAssets=items=>{const order=savedAssetOrder(),positions=new Map(order.map((id,index)=>[id,index]));return items.map((asset,index)=>({asset,index})).sort((a,b)=>(positions.get(assetOrderId(a.asset))??1e9)-(positions.get(assetOrderId(b.asset))??1e9)||a.index-b.index).map(entry=>entry.asset)};
+let draggedAssetCard=null,draggedAssetGroup=null,assetOrderDirty=false;
+function setAssetOrderDirty(dirty){assetOrderDirty=dirty;if(!window.assetOrderSave)return;assetOrderSave.disabled=!dirty;assetOrderSave.classList.remove('saved');assetOrderSave.textContent='Enregistrer l’ordre'}
+function bindAssetOrdering(){
+ if(!window.assetOrderSave)return;
+ assetGrid.querySelectorAll('.asset-numbered-title').forEach(title=>{
+  title.ondragstart=e=>{draggedAssetGroup=title.closest('.asset-numbered-group');draggedAssetGroup.classList.add('is-dragging');e.dataTransfer.effectAllowed='move';e.dataTransfer.setData('text/plain',draggedAssetGroup.dataset.assetGroupCategory)};
+  title.ondragend=()=>{draggedAssetGroup?.classList.remove('is-dragging');assetGrid.querySelectorAll('.asset-numbered-group').forEach(group=>group.classList.remove('is-drag-target'));draggedAssetGroup=null};
+  title.ondragover=e=>{const target=title.closest('.asset-numbered-group');if(!draggedAssetGroup||draggedAssetGroup.parentElement!==target.parentElement)return;e.preventDefault();target.classList.add('is-drag-target');e.dataTransfer.dropEffect='move'};
+  title.ondrop=e=>{const target=title.closest('.asset-numbered-group');if(!draggedAssetGroup||draggedAssetGroup.parentElement!==target.parentElement)return;e.preventDefault();const groups=[...target.parentElement.querySelectorAll(':scope > .asset-numbered-group')],from=groups.indexOf(draggedAssetGroup),to=groups.indexOf(target);target.parentElement.insertBefore(draggedAssetGroup,from<to?target.nextSibling:target);setAssetOrderDirty(true)};
+ });
+ assetGrid.querySelectorAll('.asset-photo').forEach(card=>{
+  card.ondragstart=e=>{draggedAssetCard=card;card.classList.add('is-dragging');e.dataTransfer.effectAllowed='move';e.dataTransfer.setData('text/plain',card.dataset.assetOrderId)};
+  card.ondragend=()=>{card.classList.remove('is-dragging');assetGrid.querySelectorAll('.asset-photo-row').forEach(row=>row.classList.remove('is-drag-target'));draggedAssetCard=null};
+  card.ondragover=e=>{if(!draggedAssetCard||draggedAssetCard.dataset.assetCategory!==card.dataset.assetCategory)return;e.preventDefault();card.parentElement.classList.add('is-drag-target');e.dataTransfer.dropEffect='move'};
+  card.ondrop=e=>{if(!draggedAssetCard||draggedAssetCard.dataset.assetCategory!==card.dataset.assetCategory)return;e.preventDefault();const row=card.parentElement,cards=[...row.querySelectorAll('.asset-photo')],from=cards.indexOf(draggedAssetCard),to=cards.indexOf(card);row.insertBefore(draggedAssetCard,from<to?card.nextSibling:card);setAssetOrderDirty(true)};
+ });
+ assetOrderSave.onclick=()=>{
+  let orderedIds=collectionItems().map(assetOrderId),visibleIds=[...assetGrid.querySelectorAll('.asset-photo')].map(card=>card.dataset.assetOrderId),visibleSet=new Set(visibleIds),index=0;
+  orderedIds=orderedIds.map(id=>visibleSet.has(id)?visibleIds[index++]:id);
+  localStorage.setItem(assetOrderKey(),JSON.stringify(orderedIds));setAssetOrderDirty(false);assetOrderSave.textContent='Ordre enregistré';assetOrderSave.classList.add('saved');setTimeout(()=>{assetOrderSave.classList.remove('saved');assetOrderSave.textContent='Enregistrer l’ordre'},1400);
+ };
+}
 function collectionItems(){
  const config=collectionDefault(),logos=[{category:'logo1',name:'Logo 1',src:config.logo}];
  if(config.homeLogo&&config.homeLogo!==config.logo)logos.push({category:'logo2',name:'Logo 2',src:config.homeLogo});
  const builtins=activeCollection==='disney'
   ? [...backgrounds.map((b,i)=>({category:'background'+(i+1),name:b.name,src:b.src})),...logos,...folderOrderedLibrary]
   : [...logos,...(collectionLibrary[activeCollection]||[])];
- return [...builtins,...(storedAssets[activeCollection]||[]).map(a=>({...a,category:a.category||'elements'}))];
+ return orderAssets([...builtins,...(storedAssets[activeCollection]||[]).map(a=>({...a,category:a.category||'elements'}))]);
 }
 function collectionLogos(){
  return collectionItems().filter(a=>/^logo\d+$/.test(a.category||'')).sort((a,b)=>Number(a.category.slice(4))-Number(b.category.slice(4)));
@@ -709,6 +735,7 @@ renderAssets=function(){
  const elementBlock=`<section class="asset-category-block elements">${elementItems.length?renderPhotoGroup('Éléments',elementItems):''}${addButton('elements','Ajouter un élément')}</section>`;
  const blocks=current==='backgrounds'?backgroundBlock:current==='logos'?logoBlock:current==='products'?productBlock:current==='gifts'?giftBlock:current==='elements'?elementBlock:[backgroundBlock,logoBlock,productBlock,giftBlock,elementBlock].join('');
  assetGrid.innerHTML=blocks||`<div class="asset-empty"><div><strong>Aucun asset dans cette collection</strong>Ajoutez les fichiers correspondants à cette collection.</div></div>`;
+ setAssetOrderDirty(false);bindAssetOrdering();
 };
 renderPicker=function(category='all'){
  const items=collectionItems().filter(a=>category==='all'||categoryMatches(a,category)||a.category===category);
