@@ -192,9 +192,9 @@
     body.editor-open .editor-workshop-button.active{background:#fff!important;border-color:#a76486!important;color:#17191c!important;box-shadow:inset 0 0 0 1px #a76486!important}
     body.editor-open .editor-workshop-button.active b{background:transparent!important}body.editor-open .editor-workshop-button.active em{background:transparent!important;color:#64686e!important}
     body.editor-open .editor-collection-field{display:none!important}
-    body.editor-open .project-tools h2,body.editor-open .content-tools h2{color:#ffe000!important}
-    body.editor-open .project-tools h2{position:relative;padding-left:25px}
-    body.editor-open .project-tools h2:before{content:'↑';position:absolute;left:0;top:-4px;width:18px;height:18px;border-radius:50%;display:grid;place-items:center;background:#a76486;color:#fff;font-size:12px;font-weight:900;line-height:1;letter-spacing:0}
+    body.editor-open .project-tools h2,body.editor-open .content-tools h2,body.editor-open .control-group-title{color:#ffe000!important}
+    body.editor-open .project-tools h2,body.editor-open .control-group-title{position:relative;min-height:18px;padding-left:25px;display:flex;align-items:center}
+    body.editor-open .project-tools h2:before,body.editor-open .control-group-title:before{position:absolute;left:0;top:0;width:18px;height:18px;border-radius:50%;display:grid;place-items:center;background:#a76486;color:#fff;font-size:11px;font-weight:900;line-height:1;letter-spacing:0}body.editor-open .project-tools h2:before{content:'↑'}body.editor-open .control-group-title:before{content:'✦'}
     body.editor-open .segmented button.active,body.editor-open .chip-button.active,body.editor-open .product-counts button.active{background:#fff!important;border-color:#a76486!important;color:#17191c!important;box-shadow:inset 0 0 0 1px #a76486!important}
     body.editor-open .project-actions .save{background:#a76486!important;border-color:#a76486!important;color:#fff!important}
     body.editor-open .layers-toggle{background:#a76486!important;border-color:#a76486!important;color:#fff!important}
@@ -211,10 +211,10 @@
     body #collections .asset-tabs button.active,body .collection-actions .primary{background:var(--collection-accent,#a76486)!important;border-color:var(--collection-accent,#a76486)!important;color:#fff!important}
     body .asset-tabs .asset-tab-add{background:color-mix(in srgb,var(--collection-accent,#a76486) 18%,transparent)!important;border-color:var(--collection-accent,#a76486)!important;color:var(--collection-secondary,#ffd91f)!important}
     body.editor-open{--studio-bg:var(--collection-bg,#263b86)!important;--studio-accent:var(--collection-accent,#a76486)!important;--studio-accent-soft:color-mix(in srgb,var(--collection-bg,#263b86) 78%,#000)!important}
-    body.editor-open .editor-workshop-strip:after,body.editor-open .project-tools h2:before{background:var(--collection-accent,#a76486)!important}
+    body.editor-open .editor-workshop-strip:after,body.editor-open .project-tools h2:before,body.editor-open .control-group-title:before{background:var(--collection-accent,#a76486)!important}
     body.editor-open .editor-workshop-button.active,body.editor-open .segmented button.active,body.editor-open .chip-button.active,body.editor-open .product-counts button.active{border-color:var(--collection-accent,#a76486)!important;box-shadow:inset 0 0 0 1px var(--collection-accent,#a76486)!important}
     body.editor-open .editor-workshop-button.active b{background:transparent!important}body.editor-open .editor-workshop-button.active em{background:transparent!important;color:#64686e!important}
-    body.editor-open .project-tools h2,body.editor-open .content-tools h2{color:var(--collection-secondary,#ffe000)!important}
+    body.editor-open .project-tools h2,body.editor-open .content-tools h2,body.editor-open .control-group-title{color:var(--collection-secondary,#ffe000)!important}
     body.editor-open .project-actions .save,body.editor-open .layers-toggle{background:var(--collection-accent,#a76486)!important;border-color:var(--collection-accent,#a76486)!important}
     body .font-controls select,body .font-add-button,body .palette-title button{border-color:color-mix(in srgb,var(--collection-accent,#a76486) 32%,transparent)!important;color:var(--collection-bg,#564767)!important}
     body .collection-actions:before{color:var(--collection-secondary,#ffe05f)!important}
